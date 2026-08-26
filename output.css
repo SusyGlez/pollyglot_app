@@ -9,10 +9,13 @@
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --color-blue-950: oklch(28.2% 0.091 267.935);
+    --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
     --container-2xs: 18rem;
     --container-md: 28rem;
+    --text-2xl: 1.5rem;
+    --text-2xl--line-height: calc(2 / 1.5);
     --text-3xl: 1.875rem;
     --text-3xl--line-height: calc(2.25 / 1.875);
     --text-5xl: 3rem;
@@ -186,6 +189,9 @@
   .m-5 {
     margin: calc(var(--spacing) * 5);
   }
+  .m-16 {
+    margin: calc(var(--spacing) * 16);
+  }
   .m-auto {
     margin: auto;
   }
@@ -195,8 +201,23 @@
   .mx-5 {
     margin-inline: calc(var(--spacing) * 5);
   }
+  .mx-14 {
+    margin-inline: calc(var(--spacing) * 14);
+  }
+  .mx-15 {
+    margin-inline: calc(var(--spacing) * 15);
+  }
+  .mx-16 {
+    margin-inline: calc(var(--spacing) * 16);
+  }
   .my-5 {
     margin-block: calc(var(--spacing) * 5);
+  }
+  .my-6 {
+    margin-block: calc(var(--spacing) * 6);
+  }
+  .my-7 {
+    margin-block: calc(var(--spacing) * 7);
   }
   .my-10 {
     margin-block: calc(var(--spacing) * 10);
@@ -206,6 +227,12 @@
   }
   .flex {
     display: flex;
+  }
+  .h-14 {
+    height: calc(var(--spacing) * 14);
+  }
+  .h-32 {
+    height: calc(var(--spacing) * 32);
   }
   .h-80 {
     height: calc(var(--spacing) * 80);
@@ -243,14 +270,32 @@
   .items-center {
     align-items: center;
   }
+  .items-start {
+    align-items: flex-start;
+  }
   .justify-center {
     justify-content: center;
+  }
+  .justify-start {
+    justify-content: flex-start;
+  }
+  .justify-items-start {
+    justify-items: start;
   }
   .gap-1 {
     gap: var(--spacing);
   }
   .gap-2\.5 {
     gap: calc(var(--spacing) * 2.5);
+  }
+  .gap-4 {
+    gap: calc(var(--spacing) * 4);
+  }
+  .gap-8 {
+    gap: calc(var(--spacing) * 8);
+  }
+  .justify-self-start {
+    justify-self: flex-start;
   }
   .rounded-2xl {
     border-radius: var(--radius-2xl);
@@ -304,6 +349,9 @@
   .text-center {
     text-align: center;
   }
+  .text-justify {
+    text-align: justify;
+  }
   .font-\[Big_Shoulders\] {
     font-family: Big Shoulders;
   }
@@ -318,6 +366,10 @@
   }
   .font-\[roboto\] {
     font-family: roboto;
+  }
+  .text-2xl {
+    font-size: var(--text-2xl);
+    line-height: var(--tw-leading, var(--text-2xl--line-height));
   }
   .text-3xl {
     font-size: var(--text-3xl);
@@ -340,6 +392,9 @@
   }
   .text-\[\#035A9D\] {
     color: #035A9D;
+  }
+  .text-black {
+    color: var(--color-black);
   }
   .text-white {
     color: var(--color-white);
