@@ -3,30 +3,44 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./output.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,100..900&family=Outfit:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <title>PollyGlot</title>
   </head>
-  <body>
-    <div>
-      <img src="./images/world_map.png" />
-      <div>
-        <img src="./images/parrot.png" />
-        <div>
-          <h1>PollyGlot</h1>
-          <p>Perfect Translation Every Time</p>
+  <body class="m-auto h-dvh max-w-md">
+    <header
+      class="bg-[#0D182E] h-80 flex justify-center bg-[url(./images/world_map.png)] bg-no-repeat bg-contain"
+    >
+      <div class="flex justify-center flex-row m-auto gap-2.5 items-center">
+        <img src="./images/parrot.png" class="" />
+        <div class="flex flex-col gap-1">
+          <h1
+            class="font-[Big_Shoulders] text-[#32CD32] font-extrabold text-5xl"
+          >
+            PollyGlot
+          </h1>
+          <p class="font-[outfit] text-white">Perfect Translation Every Time</p>
         </div>
       </div>
-    </div>
-    <div>
-      <h2>Text to translate</h2>
-      <input />
-      <h3>Select Language</h3>
+    </header>
+    <div
+      class="font-[outfit] font-bold border-[#252F42] border-4 mx-2.5 my-5 rounded-2xl p-5 flex flex-col justify-center text-center"
+    >
+      <h2 class="text-[#035A9D]">Text to translate</h2>
+      <input class="bg-[#EFF0F4]" />
+      <h3 class="text-[#035A9D]">Select Language</h3>
       <input type="radio" id="swedish" name="language" />
-      <label for="swedish">Swedish</label><br />
+      <label for="swedish">Swedish 🇸🇪</label><br />
       <input type="radio" id="spanish" name="language" />
-      <lable for="spanish">Spanish</lable><br />
+      <lable for="spanish">Spanish 🇲🇽</lable><br />
       <input type="radio" id="english" name="language" />
-      <label for="english">English</label><br />
-      <button>Translate</button>
+      <label for="english">English 🇬🇧</label><br />
+      <button class="bg-[#035A9D] text-white">Translate</button>
     </div>
   </body>
 </html>
