@@ -1,6 +1,8 @@
 {
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.121.0",
     "@tailwindcss/cli": "^4.3.3",
+    "dotenv": "^17.4.2",
     "tailwindcss": "^4.3.3"
   }
 }
