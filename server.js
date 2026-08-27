@@ -1,46 +1,72 @@
 import "dotenv/config";
+import express from "express";
 import Anthropic from "@anthropic-ai/sdk";
 import { checkEnvironment } from "./utils";
 
 checkEnvironment();
+
+const app = express();
+app.use(express.json());
 
 const client = new Anthropic({
   apiKey: process.env.AI_KEY,
   baseURL: process.env.AI_URL,
 });
 
-const message = await client.messages.create({
-  model: process.env.AI_MODEL,
-  max_tokens: 1000,
-  system: `Eres un motor de traducción integrado en una app. Tu única función es traducir texto — nunca converses, expliques, ni agregues comentarios fuera del formato indicado.
+app.post("/api/translate", async (request, response) => {
+  const { userPrompt, targetLanguage } = request.body;
 
-    ENTRADA: el usuario escribe una palabra o frase en cualquier idioma dentro de un textarea.
-    IDIOMA DESTINO: se te indicará uno de estos tres exactamente:
-    - "sv" (sueco)
-    - "es-MX" (español de México)
-    - "en-GB" (inglés británico)
+  try {
+    const message = await client.messages.create({
+      model: process.env.AI_MODEL,
+      max_tokens: 1000,
+      system: `You are a translation engine built into an app. Your only function is to translate text — never converse, explain, or add comments outside the specified format.
 
-    TAREA:
-    1. Detecta automáticamente el idioma de entrada.
-    2. Traduce el texto al idioma destino indicado, en un registro natural y cotidiano (no literal palabra por palabra) — prioriza cómo lo diría un hablante nativo.
-    3. Si el idioma destino es "en-GB", usa exclusivamente vocabulario y ortografía británica (ej. "colour" no "color", "flat" no "apartment"), nunca americanismos.
-    4. Si el idioma destino es "es-MX", usa vocabulario mexicano cuando exista una variante regional relevante (ej. "computadora" no "ordenador", "tú" en vez de "vos").
-    5. Si el texto de entrada ya está en el idioma destino, indícalo en vez de "traducir" — devuelve el mismo texto y marca "same_language": true.
+        INPUT: the user types a word or phrase in any language into a textarea.
+        TARGET LANGUAGE: you will be given exactly one of these three:
+        - "sv" (Swedish)
+        - "es-MX" (Mexican Spanish)
+        - "en-GB" (British English)
 
-    FORMATO DE SALIDA — responde ÚNICAMENTE con este JSON, sin texto adicional, sin markdown, sin backticks:
+        TASK:
+        1. Automatically detect the input language.
+        2. Translate the text into the target language, in a natural, everyday register (not word-for-word) — prioritise how a native speaker would actually say it.
+        3. If the target language is "en-GB", use exclusively British vocabulary and spelling (e.g. "colour" not "color", "flat" not "apartment"), never Americanisms.
+        4. If the target language is "es-MX", use Mexican vocabulary where a relevant regional variant exists (e.g. "computadora" not "ordenador", "tú" instead of "vos").
+        5. If the input text is already in the target language, indicate this rather than "translating" it — return the same text and mark "same_language": true.
 
-    {
-    "detected_language": "código ISO del idioma detectado (ej. 'ja', 'fr', 'es-MX')",
-    "detected_language_name": "nombre del idioma en español (ej. 'japonés')",
-    "translation": "el texto traducido",
-    "same_language": false
-    }
+        OUTPUT FORMAT — respond ONLY with this JSON, no additional text, no markdown, no backticks:
 
-    Si no puedes identificar el idioma con confianza, o el texto es ambiguo/vacío, responde:
-    {
-    "error": "no_input_detected"
-    }`,
-  messages: [{ role: "user", content: "Hi, how are you?" }],
+        {
+        "detected_language": "ISO code of the detected language (e.g. 'ja', 'fr', 'es-MX')",
+        "detected_language_name": "language name in English (e.g. 'Japanese')",
+        "translation": "the translated text",
+        "same_language": false
+        }
+
+        If you cannot confidently identify the language, or the text is ambiguous/empty, respond:
+        {
+        "error": "no_input_detected"
+        }`,
+      messages: [
+        {
+          role: "user",
+          content: `Target Language: ${targetLanguage}\nText: ${userPrompt}`,
+        },
+      ],
+    });
+
+    const translation = message.content[0].text;
+    response.json({ translation });
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({
+      message: `It's not you, it's us. Something went wrong with the server`,
+    });
+  }
 });
 
-console.log(message.content);
+const PORT = process.env.PORT || 5173;
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
+});

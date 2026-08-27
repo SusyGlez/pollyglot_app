@@ -28,11 +28,12 @@
         </div>
       </div>
     </header>
-    <div
+    <main
       class="font-[outfit] font-bold border-[#252F42] border-4 mx-2.5 my-7 rounded-2xl p-5 flex flex-col justify-center text-center text-2xl gap-8"
     >
       <h2 class="text-[#035A9D]">Text to translate</h2>
       <textarea
+        id="user-input"
         placeholder="How are you?"
         class="bg-[#EFF0F4] rounded-2xl h-32 text-black p-2.5"
       ></textarea>
@@ -51,8 +52,10 @@
           <label for="sv">Swedish 🇸🇪</label><br />
         </div>
       </div>
-      <button class="bg-[#035A9D] text-white text-3xl h-14">Translate</button>
-    </div>
+      <button id="translate-btn" class="bg-[#035A9D] text-white text-3xl h-14">
+        Translate
+      </button>
+    </main>
     <script src="index.js" type="module"></script>
   </body>
 </html>
