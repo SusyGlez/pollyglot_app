@@ -4,5 +4,8 @@
     "@tailwindcss/cli": "^4.3.3",
     "dotenv": "^17.4.2",
     "tailwindcss": "^4.3.3"
+  },
+  "scripts": {
+    "watch:css": "tailwindcss -i ./input.css -o ./output.css --watch"
   }
 }
