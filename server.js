@@ -66,7 +66,7 @@ app.post("/api/translate", async (request, response) => {
   }
 });
 
-const PORT = process.env.PORT || 5173;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
