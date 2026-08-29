@@ -29,30 +29,59 @@
       </div>
     </header>
     <main
-      class="font-[outfit] font-bold border-[#252F42] border-4 mx-2.5 my-7 rounded-2xl p-5 flex flex-col justify-center text-center text-2xl gap-8"
+      class="font-[outfit] font-bold border-[#252F42] border-4 mx-2.5 my-7 rounded-2xl p-5 flex flex-col gap-4"
     >
-      <form class="flex flex-col">
-        <h2 class="text-[#035A9D] mb-5">Original Text</h2>
-        <textarea
-          id="user-input"
-          placeholder="How are you?"
-          class="bg-[#EFF0F4] rounded-2xl h-32 text-black p-2.5 mb-6"
-        ></textarea>
-        <h3 class="text-[#035A9D] mb-5">Your Translation</h3>
-        <textarea
-          id="translation-output"
-          readonly
-          class="bg-[#EFF0F4] rounded-2xl h-32 text-black p-2.5 mb-6"
+      <div
+        id="chat-window"
+        class="flex flex-col gap-3 overflow-y-auto max-h-96"
+      >
+        <div
+          class="bg-[#035A9D] text-white rounded-2xl p-4 text-left text-lg self-end max-w-[85%]"
         >
-        </textarea>
+          Select the language you want to translate into, type your text and hit
+          send!
+        </div>
+      </div>
+
+      <form id="translate-form" class="flex gap-2">
+        <input
+          type="text"
+          id="user-input"
+          placeholder="Type here..."
+          class="flex-1 bg-[#EFF0F4] rounded-2xl text-black p-2.5 text-lg"
+        />
         <button
           id="translate-btn"
           type="submit"
-          class="bg-[#035A9D] text-white text-3xl h-14 rounded-xl w-full"
+          class="bg-[#035A9D] text-white rounded-2xl px-4"
         >
-          Translate
+          ➤
         </button>
       </form>
+
+      <div class="flex justify-center gap-4">
+        <button
+          type="button"
+          class="flag-btn text-3xl rounded-lg p-1"
+          data-lang="en-GB"
+        >
+          🇬🇧
+        </button>
+        <button
+          type="button"
+          class="flag-btn text-3xl rounded-lg p-1"
+          data-lang="es-MX"
+        >
+          🇲🇽
+        </button>
+        <button
+          type="button"
+          class="flag-btn text-3xl rounded-lg p-1"
+          data-lang="sv"
+        >
+          🇸🇪
+        </button>
+      </div>
     </main>
     <script src="translate.js" type="module"></script>
   </body>

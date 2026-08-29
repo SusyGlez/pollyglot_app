@@ -2,7 +2,7 @@ const translateForm = document.getElementById("translate-form");
 const userInput = document.getElementById("user-input");
 const translateBtn = document.getElementById("translate-btn");
 
-const API_BASE = "http://localhost:5173";
+const API_BASE = "http://localhost:5500";
 
 function start() {
   translateForm.addEventListener("submit", handleTranslationRequest);
