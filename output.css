@@ -337,9 +337,3 @@
     }
   }
 }
-fore, ::after, ::backdrop {
-      --tw-border-style: solid;
-      --tw-font-weight: initial;
-    }
-  }
-}

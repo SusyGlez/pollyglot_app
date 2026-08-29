@@ -56,11 +56,11 @@ app.post("/api/translate", async (request, response) => {
       ],
     });
 
-    const translation = message.content[0].text;
-    response.json({ translation });
+    const parsed = JSON.parse(message.content[0].text);
+    response.json({ parsed });
   } catch (e) {
     console.error(e);
-    res.status(500).json({
+    response.status(500).json({
       message: `It's not you, it's us. Something went wrong with the server`,
     });
   }
