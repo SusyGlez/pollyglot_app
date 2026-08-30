@@ -1,11 +1,13 @@
 import "dotenv/config";
 import express from "express";
 import Anthropic from "@anthropic-ai/sdk";
-import { checkEnvironment } from "./utils";
+import { checkEnvironment } from "./utils.js";
+import cors from "cors";
 
 checkEnvironment();
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 const client = new Anthropic({
@@ -56,8 +58,10 @@ app.post("/api/translate", async (request, response) => {
       ],
     });
 
-    const parsed = JSON.parse(message.content[0].text);
-    response.json({ parsed });
+    // console.log(JSON.stringify(message, null, 2));
+    const textBlock = message.content.find((block) => block.type === "text");
+    const parsed = JSON.parse(textBlock.text);
+    response.json(parsed);
   } catch (e) {
     console.error(e);
     response.status(500).json({

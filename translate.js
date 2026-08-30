@@ -1,5 +1,5 @@
-import { marked } from "marked";
-import DOMPurify from "dompurify";
+import { marked } from "https://esm.sh/marked";
+import DOMPurify from "https://esm.sh/dompurify";
 
 const chatWindow = document.getElementById("chat-window");
 const translateForm = document.getElementById("translate-form");
@@ -93,7 +93,9 @@ function addBubble(text, type) {
 
 function setActiveFlag(lang) {
   flagButtons.forEach((btn) => {
-    btn.classList.toggle("ring-4", btn.dataset.lang === lang);
+    const isActive = btn.dataset.lang === lang;
+    btn.classList.toggle("ring-4", isActive);
+    btn.classList.toggle("ring-[#035A9D]", isActive);
   });
 }
 
