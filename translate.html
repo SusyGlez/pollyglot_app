@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <title>PollyGlot</title>
   </head>
-  <body class="m-auto h-dvh max-w-md">
+  <body class="m-auto h-dvh max-w-md flex flex-col">
     <header
       class="bg-[#0D182E] h-80 flex justify-center bg-[url(./images/world_map.png)] bg-no-repeat bg-contain"
     >
@@ -29,11 +29,11 @@
       </div>
     </header>
     <main
-      class="font-[outfit] font-bold border-[#252F42] border-4 mx-2.5 my-7 rounded-2xl p-5 flex flex-col gap-4"
+      class="font-[outfit] font-bold border-[#252F42] border-4 mx-2.5 my-7 rounded-2xl p-5 flex flex-col gap-4 flex-1 overflow-hidden"
     >
       <div
         id="chat-window"
-        class="flex flex-col gap-3 overflow-y-auto max-h-96"
+        class="flex flex-col gap-3 overflow-y-auto flex-1 min-h-0"
       >
         <div
           class="bg-[#035A9D] text-white rounded-2xl p-4 text-left text-lg self-end max-w-[85%]"
