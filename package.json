@@ -10,5 +10,8 @@
   },
   "scripts": {
     "watch:css": "tailwindcss -i ./input.css -o ./output.css --watch"
+  },
+  "devDependencies": {
+    "netlify-cli": "^27.4.1"
   }
 }
