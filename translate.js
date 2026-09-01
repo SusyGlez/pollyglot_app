@@ -7,7 +7,7 @@ const userInput = document.getElementById("user-input");
 const translateBtn = document.getElementById("translate-btn");
 const flagButtons = document.querySelectorAll(".flag-btn");
 
-const API_BASE = "http://localhost:3000";
+const API_BASE = "";
 
 let activeLanguage = "en-GB";
 let lastOriginalText = "";
